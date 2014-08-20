@@ -1,0 +1,29 @@
+<div ng-controller="ParticipantsController">
+    <h1>Участници</h1>
+    <hr/>
+    <div class="row" id="participants">
+        <div class="col-sm-6 col-md-4 item" ng-show="loggedInAdmin || participant.approved"
+             ng-repeat="participant in participants">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <span class="participant-name">{{participant.name}}</span>
+                </div>
+                <div class="panel-body image-container text-center">
+                    <a href="#/participant/{{participant.id}}">
+                        <img ng-src="{{participant.image}}" src="" class="img-rounded img-thumbnail"/>
+                    </a>
+                    <hr>
+                    <p class="text-center">Рожденна дата: {{participant.birthDate}}</p>
+                    <a class="btn-vote btn btn-info" ng-hide="isDisabled && !loggedInAdmin"
+                       ng-click="voteUp(participant)">Гласувай</a>
+                    <a class="btn-disapprove btn btn-danger" ng-show="loggedInAdmin && participant.approved"
+                       ng-click="toggleApproval(participant)">Премахване</a>
+                    <a class="btn-approve btn btn-success" ng-show="loggedInAdmin && !participant.approved"
+                       ng-click="toggleApproval(participant)">Възстановяване</a>
+                    <span ng-show="isDisabled">Гласове: </span>
+                    <span class="badge">{{participant.votes}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

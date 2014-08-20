@@ -1,0 +1,21 @@
+<div ng-controller="ParticipantDetailsController">
+    <h1 class="text-center">{{participant.name}}</h1>
+    <hr/>
+    <div class=container-fluid" ng-show="loggedInAdmin || participant.approved">
+        <div class="panel-body image-container text-center">
+            <img ng-src="{{participant.image}}" src="" class="img-rounded img-thumbnail"/>
+            <hr>
+            <p class="text-center">Рожденна дата: {{participant.birthDate}}</p>
+            <span>Гласове: </span>
+            <span class="badge">{{participant.votes}}</span>
+        </div>
+        <ul ng-social-buttons class="text-center"
+            data-url="participant.sharerLocation"
+            data-title="participant.name"
+            data-description="participant.name"
+            data-image="participant.image"
+            showcounts="false">
+            <li class="ng-social-facebook">Сподели</li>
+        </ul>
+    </div>
+</div>

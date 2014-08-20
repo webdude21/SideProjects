@@ -1,0 +1,64 @@
+<div ng-controller="ParticipateController">
+    <h1>Добавяне на нов участник</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-6 col-sd-6">
+            <form name="newParticipantForm" class="form-horizontal">
+                <fieldset>
+                    <legend>Информация за участника</legend>
+                    <div class="form-group">
+                        <label for="name" class="col-lg-3 control-label">Име на участника</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="name" placeholder="Име" required ng-pattern="/^[\w\W\s]{3,40}$/" ng-model="participant.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="birth-date" class="col-lg-3 control-label">Рожденна дата</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="birth-date" placeholder="Дата (дд/мм/гггг)" required ng-pattern="/\d\d/\d\d/\d\d\d\d/" ng-model="participant.birthDate">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Допълнителна информация</legend>
+                    <div class="form-group">
+                        <label for="parent-name" class="col-lg-3 control-label">Име за контакт</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="parent-name" placeholder="Име" required ng-pattern="/^[\w\W\s]{3,40}$/" ng-model="participant.parentName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="parent-email" class="col-lg-3 control-label">Email адрес</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="parent-email"  placeholder="Име@домейн.бг" required ng-pattern="/\b[A-Z0-9._%+']+@(?:[A-Z0-9-]+\.)+[\w]{2,6}\b/i" ng-model="participant.parentEmail">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment" class="col-lg-3 control-label">Коментар</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="comment"  placeholder="Полето не е задължително" ng-model="participant.comment">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Качване на снимка</legend>
+                    <div class="form-group">
+                        <label for="image-upload" class="col-lg-3 control-label">Избор на снимка</label>
+                        <div class="col-lg-6">
+                            <input type="file" name="file-upload" id="image-upload" required ng-pattern="/\.(gif|jpg|jpeg|png)$/i" onchange="angular.element(this).scope().uploadFile(this.files[0])"/>
+                        </div>
+                        <div class="col-md-6 col-sd-6 image-container">
+                            <img ng-src="{{participant.image}}" required src="" class="img-responsive"/>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="pull-right">
+                    <button class="btn btn-default" ng-disabled="newParticipantForm.$invalid" ng-click="saveParticipant(participant, newParticipantForm)">Изпращане</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div id="message-box"></div>
+</div>

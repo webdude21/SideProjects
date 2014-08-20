@@ -1,0 +1,12 @@
+* {
+  font-family: 'Open Sans', Verdana, sans-serif !important;
+}
+body {
+  padding-top: 50px;
+}
+body input.ng-dirty.ng-valid {
+  background-color: #8fbc8f !important;
+}
+body input.ng-dirty.ng-invalid {
+  background-color: #ffc0cb !important;
+}

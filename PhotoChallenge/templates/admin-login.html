@@ -1,0 +1,30 @@
+<div ng-controller="AdminLoginController">
+    <h1>Администрация</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form name="userLoginForm" class="form-horizontal">
+                <fieldset>
+                    <legend>Вход за администрация</legend>
+                    <div class="form-group">
+                        <label for="name" class="col-lg-3 control-label">Логин</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="name" placeholder="Логин" required ng-pattern="/^[\w]{3,40}$/" ng-model="user.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="birth-date" class="col-lg-3 control-label">Парола</label>
+                        <div class="col-lg-9">
+                            <input type="password" class="form-control validity" id="birth-date" placeholder="Парола" required ng-model="user.password">
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="pull-right">
+                    <button class="btn btn-default" ng-disabled="userLoginForm.$invalid" ng-click="loginUser(user, userLoginForm)">Вход</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div id="message-box"></div>
+</div>

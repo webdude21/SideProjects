@@ -1,0 +1,60 @@
+<div ng-controller="AdminController">
+    <h1>Администрация</h1>
+    <hr/>
+    <div class="row">
+        <table class="table table-striped text-center table-hover">
+            <thead>
+            <tr class="info">
+                <th class="text-center vcenter">#</th>
+                <th class="text-center vcenter">
+                    <a href="" ng-click="predicate = 'name'; reverse=!reverse">Име на участника</a>
+                </th>
+                <th class="text-center vcenter">
+                    <a href="" ng-click="predicate = 'birthDate'; reverse=!reverse">Рожденна дата</a>
+                </th>
+                <th class="text-center vcenter">
+                    <a href="" ng-click="predicate = 'parrentName'; reverse=!reverse">Име на родителя</a>
+                </th>
+                <th class="text-center vcenter">
+                    <a href="" ng-click="predicate = 'parentEmail'; reverse=!reverse">Email адрес</a>
+                </th>
+                <th class="text-center vcenter">
+                    <a href="" ng-click="predicate = 'votes'; reverse=!reverse">Гласове</a>
+                </th>
+                <th class="text-center vcenter">
+                    <a href="" ng-click="predicate = 'comment'; reverse=!reverse">Коментар</a>
+                </th>
+                <th class="text-center vcenter">Снимка</th>
+                <th class="text-center vcenter">
+                    <a href="" ng-click="predicate = 'createdAt'; reverse=!reverse">Регистриран на</a>
+                </th>
+                <th class="text-center vcenter">
+                    <a href="" ng-click="predicate = 'updatedAt'; reverse=!reverse">Промяна на</a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="participant in participants | orderBy:predicate:reverse">
+                <td>{{$index + 1}}</td>
+                <td>{{participant.name}}</td>
+                <td>{{participant.birthDate}}</td>
+                <td>{{participant.parentName}}</td>
+                <td>{{participant.parentEmail}}</td>
+                <td>{{participant.votes}}</td>
+                <td>{{participant.comment}}</td>
+                <td>
+                    <a href="{{participant.image}}" target="_blank">виж</a>
+                </td>
+                <td>{{participant.createdAt}}</td>
+                <td>{{participant.updatedAt}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <div class="pull-right">
+            <button class="btn btn-default" ng-click="logout()">Изход</button>
+        </div>
+    </div>
+    <hr/>
+    <div id="message-box"></div>
+</div>
