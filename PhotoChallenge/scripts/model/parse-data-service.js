@@ -17,7 +17,7 @@ photoChallengeApp.factory('dataProvider', function () {
         participantsCollection.fetch()
             .then(function (collection) {
                 var convertedCollection = [];
-                collection.forEach(function (participant){
+                collection.forEach(function (participant) {
                     convertedCollection.push(convertParticipant(participant));
                 });
                 success(convertedCollection);
@@ -26,7 +26,7 @@ photoChallengeApp.factory('dataProvider', function () {
 
     function getParticipantById(id, success, error) {
         var participantQuery = new Parse.Query(ParticipantClass);
-        participantQuery.get(id, function(participant){
+        participantQuery.get(id, function (participant) {
             success(convertParticipant(participant));
         }, error);
     }
