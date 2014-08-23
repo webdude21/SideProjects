@@ -26,10 +26,10 @@ var photoChallengeApp = angular
     })
     .run(function ($rootScope, $location, dataProvider) {
         $rootScope.$on("$routeChangeStart", function (event, next) {
-            if (!dataProvider.checkIfUserAlreadyLoggedIn() && next.templateUrl === 'templates/admin.html') {
-                if (!(next.templateUrl === "templates/admin-login.html")) {
-                    $location.path("/admin-login");
-                }
+            if (!dataProvider.checkIfUserAlreadyLoggedIn()
+                && next.templateUrl === 'templates/admin.html'
+                && !(next.templateUrl === 'templates/admin-login.html')) {
+                $location.path("/admin-login");
             }
         });
     });

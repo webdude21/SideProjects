@@ -13,7 +13,7 @@ photoChallengeApp.controller('AdminLoginController',
                         userData.attributes.username, MESSAGE_BOX_SELECTOR);
                 }, 500);
                 $scope.loggedInUser = userData.attributes.username;
-                $location.path("/admin");
+                $location.path('/admin');
                 $scope.reset();
             }, function (user, error) {
                 messageBox.error(error.message, MESSAGE_BOX_SELECTOR)

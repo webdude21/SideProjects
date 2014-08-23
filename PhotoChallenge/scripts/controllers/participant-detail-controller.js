@@ -2,7 +2,7 @@
 
 photoChallengeApp.controller('ParticipantDetailsController',
     function ParticipantDetailsController($scope, $routeParams, $location, dataProvider, messageBox) {
-        var INVALID_PARTICIPANT_ID_MESSAGE = "Не съществува такъв участник!";
+        var INVALID_PARTICIPANT_ID_MESSAGE = 'Не съществува такъв участник!';
         $scope.participant = {};
         dataProvider.getParticipantById($routeParams.id, function (participant) {
             $scope.participant = participant;

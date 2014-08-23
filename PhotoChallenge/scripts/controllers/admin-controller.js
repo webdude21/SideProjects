@@ -5,7 +5,7 @@ photoChallengeApp.controller('AdminController',
 
         $scope.logout = function () {
             dataProvider.logout();
-            $location.path("/admin-login");
+            $location.path('/admin-login');
         };
 
         $scope.participants = [];
