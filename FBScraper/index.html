@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Facebook Graph Scraper</title>
+    <link rel="stylesheet" href="styles/fb-scraper.css">
+</head>
+<body>
+<div id="wrapper">
+    <fieldset class="input-holder" id="fs-input">
+        <label class="input-label" for="ta-input">Facebook account urls: </label>
+        <textarea id="ta-input"></textarea>
+    </fieldset>
+    <fieldset class="input-holder" id="fs-output">
+        <label class="input-label" for="ta-output">Facebook extracted IDs: </label>
+        <textarea id="ta-output"></textarea>
+    </fieldset>
+    <div id="btn-panel">
+        <progress id="progress-bar" value="0" max="100"></progress>
+        <button id="btn-getids">GetIDs</button>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="scripts/fb-scraper.js"></script>
+</body>
+</html>
