@@ -10,7 +10,7 @@ photoChallengeApp.controller('ParticipateController',
         var validImage = false;
         var PARTICIPANT_SAVE_SUCCESS = 'Участника е записан успешно!';
         var PARTICIPANT_SAVE_ERROR = 'Възникна грешка при записването! ';
-        var INVALID_IMAGE_ERROR = 'Mоля уверете се, че сте избрали валидно ' +
+        var INVALID_IMAGE_ERROR = 'Моля уверете се, че сте избрали валидно ' +
             'изображение от следните формати (gif, jpg, jpeg, tiff, png)!';
 
         $scope.saveParticipant = function (participant, newParticipant) {
