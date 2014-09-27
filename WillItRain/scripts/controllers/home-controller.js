@@ -3,9 +3,7 @@
 willItRainApp.controller('HomeController',
     function HomeController($scope, WeatherResource, notifier, metricSystemService) {
 
-        $scope.metric = {
-            degrees: metricSystemService.getDegrees()
-        };
+        $scope.metric = { degrees: metricSystemService.getDegrees() };
 
         // returns just one location
         $scope.findLocationByCityName = function (searchQuery) {
