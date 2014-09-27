@@ -15,7 +15,7 @@ var willItRainApp = angular
     })
     .value('toastr', toastr)
     .constant('baseUrl', 'http://api.openweathermap.org')
-    .constant('appId', 'fa4627a3aaca41ff61307225bd25c419')
+    .constant('apiKey', 'fa4627a3aaca41ff61307225bd25c419')
     .constant('author', 'Webdude')
     .constant('appName', 'TicTacToe')
     .constant('authorLink', 'http://webdude.eu')
