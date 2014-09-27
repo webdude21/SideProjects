@@ -1,0 +1,53 @@
+<div class="container" ng-controller="HomeController">
+    <div class="well">
+        <form name="searchByCityForm" class="form-horizontal">
+            <fieldset>
+                <legend>Search for a weather location by city name</legend>
+                <div class="form-group">
+                    <label for="name" class="col-lg-3 control-label">City name</label>
+
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control validity" id="name" required
+                               placeholder="New York" ng-model="searchQuery.city">
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <button class="btn btn-default" ng-disabled="searchByCityForm.$invalid"
+                            ng-click="findLocationByCityName(searchQuery.city)">Search
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+        <form name="searchByCoordinates" class="form-horizontal">
+            <fieldset>
+                <legend>Search for a weather location by coordinates</legend>
+                <div class="form-group">
+                    <label for="latitude" class="col-lg-3 control-label">Latitude</label>
+
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control validity" id="latitude" required
+                               placeholder="40.71"
+                               ng-model="searchQuery.lat">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="longitude" class="col-lg-3 control-label">Longitude</label>
+
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control validity" id="longitude" required
+                               placeholder="-74.01"
+                               ng-model="searchQuery.lon">
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <button class="btn btn-default" ng-disabled="searchByCoordinates.$invalid"
+                            ng-click="findLocationByCoordinates(searchQuery)">Search
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div ng-repeat="item in searchResults.list">
+        <location-result></location-result>
+    </div>
+</div>

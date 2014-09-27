@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Will it rain ?</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="styles/will-it-rain.css">
+</head>
+<body ng-app="willItRainApp" ng-controller="PageController" ng-cloak>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#/home" class="navbar-brand">{{appTitle}}</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{getCurrentMetric()}}<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" ng-click="setMetrics('metric')">°C Metric</a></li>
+                        <li><a href="#" ng-click="setMetrics('imperial')">°F Imperial</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div ng-view class="container" ng-cloak>
+</div>
+<hr>
+<div class="center-block" id="message-box"></div>
+<div class="panel-footer text-center"><a href="{{authorLink}}" ng-cloak>Created by {{author}}</a></div>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-resource.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-animate.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="scripts/will-it-rain-app.js"></script>
+<script src="scripts/services/metric-system-service.js"></script>
+<script src="scripts/controllers/directives/location-result.js"></script>
+<script src="scripts/controllers/location-detail.js"></script>
+<script src="scripts/services/resources/weather-resource.js"></script>
+<script src="scripts/services/notifier.js"></script>
+<script src="scripts/controllers/page-controller.js"></script>
+<script src="scripts/controllers/home-controller.js"></script>
+</body>
+</html>
