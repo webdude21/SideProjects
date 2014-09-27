@@ -1,5 +1,7 @@
 'use strict';
-willItRainApp.factory('languageService', function () {
+willItRainApp.factory('languageService', function (appName, $cookieStore) {
+    var cookieStorageLanguageSettings = appName + '_languageSettings';
+
     var languages = [
         {
             languageFull: 'English',
@@ -79,25 +81,27 @@ willItRainApp.factory('languageService', function () {
         }
     ];
 
-    var currentLanguage = languages[0]; // aka english
+    var defaultLanguage = languages[0]; // aka english
 
     function setCurrentLanguage(languageFull) {
         languages.forEach(function (lang) {
             if (lang.languageFull === languageFull) {
-                currentLanguage = lang;
+                $cookieStore.put(cookieStorageLanguageSettings, lang);
             }
         })
     }
 
     function getCurrentLanguage() {
-        return currentLanguage;
+        var savedLanguage = $cookieStore.get(cookieStorageLanguageSettings);
+        if (savedLanguage) {
+            return savedLanguage;
+        }
+        return defaultLanguage;
     }
-
 
     return {
         languagesList: languages,
         setCurrentLanguage: setCurrentLanguage,
         getCurrentLanguage: getCurrentLanguage
     }
-
 });

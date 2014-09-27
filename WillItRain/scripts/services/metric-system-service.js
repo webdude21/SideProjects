@@ -1,28 +1,55 @@
 'use strict';
-willItRainApp.factory('metricSystemService', function () {
-    var currentMetric = '°C Metric';
-    var units = "metric";
+willItRainApp.factory('metricSystemService', function (appName, $cookieStore) {
+    var defaultMetricSystem = {
+        currentMetric: '°C Metric',
+        units: 'metric'
+    };
+
+    var savedMetricSystem;
+
+    var cookieStorageMetricSystemSettings = appName + '_metricSettings';
 
     var setMetrics = function (currentUnits) {
         if (currentUnits === 'metric') {
-            units = currentUnits;
-            currentMetric = '°C Metric';
+            savedMetricSystem = {
+                currentMetric: '°C Metric',
+                units: currentUnits
+            };
         } else {
-            units = currentUnits;
-            currentMetric = '°F Imperial';
+            savedMetricSystem = {
+                currentMetric: '°F Imperial',
+                units: currentUnits
+            };
         }
+        $cookieStore.put(cookieStorageMetricSystemSettings, savedMetricSystem);
     };
 
+    function getSettingsFromCookies(){
+        savedMetricSystem = $cookieStore.get(cookieStorageMetricSystemSettings);
+    }
+
     var getMetricsTitle = function () {
-        return currentMetric;
+        getSettingsFromCookies();
+        if (savedMetricSystem) {
+            return savedMetricSystem.currentMetric;
+        }
+        return defaultMetricSystem.currentMetric;
     };
 
     var getMetrics = function () {
-        return units;
+        getSettingsFromCookies();
+        if (savedMetricSystem) {
+            return savedMetricSystem.units;
+        }
+        return defaultMetricSystem.units;
     };
 
     var getDegrees = function () {
-        return units === 'metric' ? '°C' : '°F';
+        getSettingsFromCookies();
+        if (savedMetricSystem) {
+            return savedMetricSystem.units === 'metric' ? '°C' : '°F';
+        }
+        return defaultMetricSystem.units === 'metric' ? '°C' : '°F';
     };
 
     return{

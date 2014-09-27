@@ -1,19 +1,21 @@
-<div class="well location-item well-sm col-lg-3 ">
-    <h1 class="text-primary">
-        <a href="#/location-detail/{{item.id}}" class="location-name">{{item.name}}</a>
+<div class="well location-item well-sm col-md-12 text-right">
+    <h1 class="text-primary text-right"> {{item.city.name}}
     </h1>
-    <p>Humidity: {{item.main.humidity}} %</p>
-    <p>Pressure: {{item.main.pressure}} hpa</p>
-    <p>Sea Level: {{item.main.sea_level}} cm</p>
-    <p>Current temperature: {{item.main.temp}} {{metric.degrees}}</p>
-    <!--<p>Min temperature: {{item.main.temp_min}} {{metric.degrees}}</p>-->
-    <!--<p>Max temperature: {{item.main.temp_max}} {{metric.degrees}}</p>-->
-    <p>Wind direction: {{item.wind.deg}} °</p>
-    <p>Wind speed: {{item.wind.speed}} m/s</p>
-    <p>Latitude: {{item.coord.lat}} °</p>
-    <p>Longitude: {{item.coord.lon}} °</p>
-    <div ng-repeat="weatherResult in item.weather">
-        <span class="weather-description">{{weatherResult.description}}</span>
-        <img ng-src="http://openweathermap.org/img/w/{{weatherResult.icon}}.png">
+    <span>Latitude: {{item.city.coord.lat}} °</span>
+    <span>Longitude: {{item.city.coord.lon}} °</span>
     </div>
+<div class="well location-item well-sm col-md-3" ng-repeat="weatherResult in item.list">
+        <h5 class="text-primary">
+            Forecast for: {{weatherResult.dt_txt}}
+        </h5>
+        <p>Humidity: {{weatherResult.main.humidity}} %</p>
+        <p>Pressure: {{weatherResult.main.pressure}} hpa</p>
+        <p>Sea Level: {{weatherResult.main.sea_level}} cm</p>
+        <p>Temperature: {{weatherResult.main.temp}} {{metric.degrees}}</p>
+        <p>Min temperature: {{weatherResult.main.temp_min}} {{metric.degrees}}</p>
+        <p>Max temperature: {{weatherResult.main.temp_max}} {{metric.degrees}}</p>
+        <p>Wind direction: {{weatherResult.wind.deg}} °</p>
+        <p>Wind speed: {{weatherResult.wind.speed}} m/s</p>
+        <span class="weather-description">{{weatherResult.weather[0].description}}</span>
+        <img ng-src="http://openweathermap.org/img/w/{{weatherResult.weather[0].icon}}.png">
 </div>

@@ -6,6 +6,7 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, $resource, me
     var locationServiceUrl = baseServiceUrl + '/weather?lat=:lat&lon=:lon&units=:units&lang=:lang';
     var cityServiceEndPoint = baseServiceUrl + '/weather?id=:id&units=:units&lang=:lang';
     var citySearchEndPoint = baseServiceUrl + '/weather?q=:cityName&lang=:lang';
+    var cityForecastEndPoint = baseServiceUrl + '/forecast/weather?id=:id&units=:units&lang=:lang';
 
     var CityService = $resource(cityServiceEndPoint, null, {
         'byId': { method: 'GET', params: { id: '@id', units: '@units', lang: '@lang' }, isArray: false }
@@ -21,6 +22,10 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, $resource, me
 
     var LocationService = $resource(locationServiceUrl, null, {
         'byLocation': { method: 'GET', params: { lat: '@lat', lon: '@lon', units: '@units',  lang: '@lang' }, isArray: false }
+    });
+
+    var CityForecast = $resource(cityForecastEndPoint, null, {
+        'byId': { method: 'GET', params: { id: '@id', units: '@units', lang: '@lang' }, isArray: false }
     });
 
 
@@ -39,9 +44,15 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, $resource, me
             lang: languageService.getCurrentLanguage().languageCode})
     }
 
+    function getForeCastById(id) {
+        return CityForecast.byId({id: id, units: metricSystemService.getMetrics(),
+            lang: languageService.getCurrentLanguage().languageCode});
+    }
+
     return{
         getWeatherByCityName: getWeatherByCityName,
         getWeatherByCoordinates: getWeatherByCoordinates,
-        getCityById: getCityById
+        getCityById: getCityById,
+        getForeCastById: getForeCastById
     }
 });

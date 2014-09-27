@@ -6,9 +6,17 @@ willItRainApp.controller('PageController',
         $scope.authorLink = authorLink;
         $scope.appTitle = appTitle;
         $scope.languagesList = languageService.languagesList;
-        $scope.setCurrentLanguage = languageService.setCurrentLanguage;
         $scope.getCurrentLanguage = languageService.getCurrentLanguage;
         $scope.getCurrentMetric = metricSystemService.getMetricsTitle;
-        $scope.setMetrics = metricSystemService.setMetrics;
+
+        $scope.setCurrentLanguage = function (lang){
+            languageService.setCurrentLanguage(lang);
+            location.reload();
+        };
+
+        $scope.setMetrics = function(metric){
+            metricSystemService.setMetrics(metric);
+            location.reload();
+        };
     }
 );
