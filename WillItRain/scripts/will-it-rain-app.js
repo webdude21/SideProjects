@@ -8,7 +8,7 @@ var willItRainApp = angular
                 templateUrl: 'templates/home.html'
             })
             .when('/location-detail/:id', {
-                templateUrl: 'templates/directives/location-result.html',
+                templateUrl: 'templates/location-detail.html',
                 controller: 'LocationDetailsController'
             })
             .otherwise({redirectTo: '/home'});

@@ -22,13 +22,21 @@
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{getCurrentMetric()}}<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{getCurrentMetric()}}<b
+                            class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#" ng-click="setMetrics('metric')">°C Metric</a></li>
                         <li><a href="#" ng-click="setMetrics('imperial')">°F Imperial</a></li>
                     </ul>
                 </li>
-
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{getCurrentLanguage().languageFull}}<b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" ng-repeat="lang in languagesList"
+                               ng-click="setCurrentLanguage(lang.languageFull)">{{lang.languageFull}}</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -49,6 +57,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="scripts/will-it-rain-app.js"></script>
 <script src="scripts/services/metric-system-service.js"></script>
+<script src="scripts/services/language-service.js"></script>
 <script src="scripts/controllers/directives/location-result.js"></script>
 <script src="scripts/controllers/location-detail.js"></script>
 <script src="scripts/services/resources/weather-resource.js"></script>

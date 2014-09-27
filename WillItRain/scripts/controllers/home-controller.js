@@ -19,7 +19,7 @@ willItRainApp.controller('HomeController',
                 return false;
             }
 
-            if (isNaN(searchQuery.lat) || isNaN(searchQuery.lon)){
+            if (isNaN(searchQuery.lat) || isNaN(searchQuery.lon)) {
                 return false;
             }
 
@@ -32,7 +32,6 @@ willItRainApp.controller('HomeController',
             }
             return true
         }
-
 
         // returns a collection of locations
         $scope.findLocationByCoordinates = function (searchQuery) {
