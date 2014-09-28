@@ -8,8 +8,8 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
     var citySearchEndPoint = baseServiceUrl + '/weather?q=:cityName&lang=:lang&APPID=:APIKEY';
     var cityForecastEndPoint = baseServiceUrl + '/forecast/weather?id=:id&units=:units&lang=:lang&APPID=:APIKEY';
 
-    var handleSuccess = function (response) {
-        notifier.success(response.cod);
+    var handleSuccess = function () {
+        // no implementation
     };
 
     var handleError = function (response) {
