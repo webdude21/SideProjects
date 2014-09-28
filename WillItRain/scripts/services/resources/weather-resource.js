@@ -8,8 +8,12 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
     var citySearchEndPoint = baseServiceUrl + '/weather?q=:cityName&lang=:lang&APPID=:APIKEY';
     var cityForecastEndPoint = baseServiceUrl + '/forecast/weather?id=:id&units=:units&lang=:lang&APPID=:APIKEY';
 
+    var handleSuccess = function (response) {
+        notifier.success(response.cod);
+    };
+
     var handleError = function (response) {
-        notifier.error(response.data.message);
+        notifier.error(response.error);
     };
 
     var CityService = $resource(cityServiceEndPoint, null, {
@@ -18,7 +22,7 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
             params: { id: '@id', units: '@units', lang: '@lang', apiKey: '@APIKEY' },
             isArray: false
         }
-    }, handleError);
+    });
 
     var CitySearch = $resource(citySearchEndPoint, null, {
         'byCityName': {
@@ -26,7 +30,7 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
             params: { cityName: '@cityName', units: '@units', lang: '@lang', apiKey: '@APIKEY' },
             isArray: false
         }
-    }, handleError);
+    });
 
     var LocationsService = $resource(locationsServiceUrl, null, {
         'byLocation': {
@@ -34,7 +38,7 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
             params: { lat: '@lat', lon: '@lon', units: '@units', lang: '@lang', apiKey: '@APIKEY' },
             isArray: false
         }
-    }, handleError);
+    });
 
     var LocationService = $resource(locationServiceUrl, null, {
         'byLocation': {
@@ -42,7 +46,7 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
             params: { lat: '@lat', lon: '@lon', units: '@units', lang: '@lang', apiKey: '@APIKEY' },
             isArray: false
         }
-    }, handleError);
+    });
 
     var CityForecast = $resource(cityForecastEndPoint, null, {
         'byId': {
@@ -50,7 +54,7 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
             params: { id: '@id', units: '@units', lang: '@lang', apiKey: '@APIKEY' },
             isArray: false
         }
-    }, handleError);
+    });
 
 
     function getCityById(id) {
@@ -59,7 +63,7 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
             units: metricSystemService.getMetrics(),
             lang: languageService.getCurrentLanguage().languageCode,
             apiKey: apiKey
-        });
+        }, handleSuccess, handleError);
     }
 
     function getWeatherByCoordinates(cooridinates) {
@@ -69,7 +73,7 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
             units: metricSystemService.getMetrics(),
             lang: languageService.getCurrentLanguage().languageCode,
             apiKey: apiKey
-        })
+        }, handleSuccess, handleError)
     }
 
     function getWeatherByCityName(cityName) {
@@ -78,7 +82,7 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
             units: metricSystemService.getMetrics(),
             lang: languageService.getCurrentLanguage().languageCode,
             apiKey: apiKey
-        })
+        }, handleSuccess, handleError)
     }
 
     function getForeCastById(id) {
@@ -87,7 +91,7 @@ willItRainApp.factory('WeatherResource', function ($http, baseUrl, apiKey, $reso
             units: metricSystemService.getMetrics(),
             lang: languageService.getCurrentLanguage().languageCode,
             apiKey: apiKey
-        });
+        }, handleSuccess, handleError);
     }
 
     return{
