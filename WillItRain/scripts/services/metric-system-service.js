@@ -24,7 +24,7 @@ willItRainApp.factory('metricSystemService', function (appName, $cookieStore) {
         $cookieStore.put(cookieStorageMetricSystemSettings, savedMetricSystem);
     };
 
-    function getSettingsFromCookies(){
+    function getSettingsFromCookies() {
         savedMetricSystem = $cookieStore.get(cookieStorageMetricSystemSettings);
     }
 
