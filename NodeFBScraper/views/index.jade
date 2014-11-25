@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    #wrapper
+        form(name="signUpForm" method="post" id="sign-up-form")
+            fieldset#fs-input.input-holder
+                label.input-label(for='ta-input') Facebook account urls:
+                textarea#ta-input(name="fbUrls")
+            fieldset#fs-output.input-holder
+                label.input-label(for='tb-output') Get me a cookie:
+                input#tb-output(name="fbCookie")
+            fieldset#fs-output.input-holder
+                label.input-label(for='tb-timetowait') Time to wait (in seconds):
+                input#tb-timetowait(name="timeToWait" type="number" value='10')
+            #btn-panel
+                input#btn-getids(type="submit")

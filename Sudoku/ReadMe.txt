@@ -1,0 +1,1 @@
+The index.html must be loaded within a web server, otherwise the app doesn't work, because of the null origin problem. This is because the Sudoku-grid template is loaded with a get request after the app is loaded.

@@ -1,0 +1,25 @@
+{
+  "name": "Sudoku",
+  "version": "0.1.1",
+  "homepage": "https://github.com/webdude21/SideProjects",
+  "authors": [
+    "Димо Петров <webdude@webdude.eu>"
+  ],
+  "main": "app.js",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.15",
+    "jquery": "~2.1.1",
+    "mustache": "~0.8.2"
+  }
+}

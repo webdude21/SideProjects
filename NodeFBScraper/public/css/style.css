@@ -1,0 +1,78 @@
+body,
+textarea,
+input,
+button,
+img,
+div,
+ul,
+li,
+span,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+table, tr, td, th, thead {
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+#wrapper {
+    padding: 15px;
+    overflow: hidden;
+}
+
+#wrapper #btn-panel {
+    margin-left: 15px;
+}
+
+#wrapper #btn-panel #progress-bar {
+    width: 650px;
+    height: 40px;
+}
+
+#wrapper .input-label {
+    display: block;
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+#wrapper #fs-input,
+#wrapper #fs-output {
+    border: none;
+}
+
+#wrapper #btn-getids {
+    margin-left: 20px;
+    width: 200px;
+    font-size: 26px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#wrapper #fs-input {
+    float: left;
+}
+
+#wrapper #ta-output,
+#wrapper #ta-input {
+    padding: 10px;
+    border: 2px dashed black;
+    border-radius: 10px;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    font-family: 'Arial';
+    color: black;
+    font-weight: bolder;
+    width: 400px;
+    height: 500px;
+    background: #60c5ea;
+    background: -moz-linear-gradient(top, #b5eaea 25%, #60c5ea 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(25%, #b5eaea), color-stop(100%, #60c5ea));
+    background: -webkit-linear-gradient(top, #b5eaea 25%, #60c5ea 100%);
+    background: -o-linear-gradient(top, #b5eaea 25%, #60c5ea 100%);
+    background: -ms-linear-gradient(top, #b5eaea 25%, #60c5ea 100%);
+    background: linear-gradient(to bottom, #b5eaea 25%, #60c5ea 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b5eaea', endColorstr='#60c5ea', GradientType=0);
+}

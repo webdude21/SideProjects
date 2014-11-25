@@ -6,28 +6,40 @@ function convertFBurlsToIDs() {
     var graphUrls = [];
     var output = [];
     var index;
+    var requestTimeout = 2000;
     var errors = false;
 
     var convertToGraphID = function convertToGraphID(currentGraphRequest) {
-        $.getJSON(currentGraphRequest, function (result) {
-            remaining--;
-            output.push(result.id);
-            progressBar.value = graphUrls.length - remaining;
+        $.ajax({
+            url: currentGraphRequest,
+            type: "GET",
+            timeout: requestTimeout,
+            contentType: "text/plain",
+            success: function (result) {
+                output.push(result.id);
+                progressBar.value = graphUrls.length - remaining;
+                if (graphURL.length >= index) {
+                    return;
+                }
+                remaining--;
 
-            if (remaining === 0) {
-                exportOutputTo('ta-output', '\n', output);
-                report();
-            } else {
+                if (remaining <= 0) {
+                    exportOutputTo('ta-output', '\n', output);
+                    report();
+                } else {
+                    convertToGraphID(graphUrls[index += 1]);
+                }
+            },
+            error: function () {
+                if (graphURL.length >= index) {
+                    return;
+                }
+                remaining--;
+                errors = true;
+                console.log("Cannot process " + currentGraphRequest + "! \n Error:" + status);
                 convertToGraphID(graphUrls[index += 1]);
             }
-
-        }).error(function () {
-            remaining--;
-            errors = true;
-            console.log("Cannot process " + currentGraphRequest + "! \n Error:" + status);
-            convertToGraphID(graphUrls[index += 1]);
-        })
-
+        });
     };
 
     var graphURL;
@@ -60,24 +72,24 @@ function convertFBurlsToIDs() {
             alert('There ware errors during the processing of the urls, please check the console!');
         }
     }
-}
 
-function getInputFrom(inputID, delimiter) {
-    return document.getElementById(inputID).value.split(delimiter);
-}
-
-function exportOutputTo(inputID, delimiter, array) {
-    document.getElementById(inputID).value = array.join(delimiter);
-}
-
-function convertToGraphURL(url) {
-    var regexParser = /(https?|ftp):\/\/([^\/]+)\/(.*)/i;
-    var match = url.match(regexParser);
-    var resource = match[3];
-
-    if (resource.indexOf('id=') > -1) {
-        resource = resource.split('id=');
-        resource = resource[resource.length - 1];
+    function getInputFrom(inputID, delimiter) {
+        return document.getElementById(inputID).value.split(delimiter);
     }
-    return 'http://graph.facebook.com/' + resource.split('?')[0].split('&')[0];
+
+    function exportOutputTo(inputID, delimiter, array) {
+        document.getElementById(inputID).value = array.join(delimiter);
+    }
+
+    function convertToGraphURL(url) {
+        var regexParser = /(https?|ftp):\/\/([^\/]+)\/(.*)/i;
+        var match = url.match(regexParser);
+        var resource = match[3];
+
+        if (resource.indexOf('id=') > -1) {
+            resource = resource.split('id=');
+            resource = resource[resource.length - 1];
+        }
+        return 'https://graph.facebook.com/' + resource.split('?')[0].split('&')[0];
+    }
 }

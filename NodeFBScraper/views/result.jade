@@ -1,0 +1,24 @@
+extends layout
+block content
+    #wrapper
+        table
+            thead
+                tr
+                    th Id
+                    th Username
+                    th Name
+                    th Locale
+                    th Gender
+                    th Profile
+            tbody
+                for item in data
+                    tr
+                        td #{item.id}
+                        td #{item.username}
+                        td #{item.name}
+                        td #{item.locale}
+                        td #{item.gender}
+                        td
+                            a(href=item.link) #{item.username}
+
+

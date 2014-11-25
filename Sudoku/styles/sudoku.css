@@ -1,0 +1,31 @@
+#wrapper #game-board td,
+#wrapper #game-board .sudoku-input {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: 0px;
+}
+#wrapper #game-board .sudoku-input {
+  font-weight: bolder;
+  font-size: 1.7rem;
+}
+#wrapper #game-board .sudoku-input:hover:not(:disabled) {
+  background-color: aquamarine;
+}
+#wrapper #game-board .sudoku-input.bad-move {
+  background-color: lightcoral;
+}
+#wrapper #game-board tr,
+#wrapper #game-board td {
+  border: 1px solid black;
+}
+#wrapper #game-board table.game-board {
+  border-collapse: collapse;
+  border: 4px solid black;
+}
+#wrapper #game-board td:nth-of-type(3n+0) {
+  border-right: 4px solid black;
+}
+#wrapper #game-board tr:nth-of-type(3n+0) {
+  border-bottom: 4px solid black;
+}
