@@ -1,5 +1,6 @@
 extends ../includes/layout
 block main-content
+    include ../includes/facebookSDK
     .container-fluid
         H2.text-center.break-word #{fullName}
         div.participant-images.panel-body.image-container.text-center
@@ -15,6 +16,6 @@ block main-content
                 span Гласове: &nbsp
                 span.badge #{votes.length}
             hr
-            a.btn.btn-primary(href= id + "/vote") Гласувай
+            .fb-share-button(data-href="" data-layout="button_count")
 block page-scripts
 script(type="text/javascript" src="/scripts/masonry.pkgd.min.js")
